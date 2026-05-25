@@ -19,9 +19,8 @@
 
             <div class="nav">
                 <a href="HomePage.aspx">Home</a>
-                <a href="ProductsPage.aspx">Products</a>
-                <a href="CartPage.aspx">Cart</a>
-                <a href="ProfilePage.aspx">Profile</a>
+                <a href="UserPage.aspx">Products</a>
+                <a href="UserPageMan.aspx">Profile</a>
                 <a href="LoginPage.aspx">Logout</a>
             </div>
 

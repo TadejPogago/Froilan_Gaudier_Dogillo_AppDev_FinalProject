@@ -94,7 +94,7 @@
         </div>
 
         <!-- UI ONLY BUTTON (NO CLICK EVENT YET) -->
-        <asp:Button ID="btnChangePassword" runat="server" Text="Change Password" CssClass="btn-update" />
+        <asp:Button ID="btnChangePassword" runat="server" Text="Change Password" CssClass="btn-update" OnClick="btnChangePassword_Click" />
 
         <asp:Label ID="lblMessage" runat="server" CssClass="message" Text="" />
 

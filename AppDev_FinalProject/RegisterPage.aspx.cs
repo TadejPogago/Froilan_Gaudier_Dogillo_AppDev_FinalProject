@@ -13,5 +13,10 @@ namespace AppDev_FinalProject
         {
 
         }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+     
+        }
     }
 }

@@ -22,7 +22,7 @@
         <asp:ListItem>Platinum</asp:ListItem>
     </asp:DropDownList>
     <br />
-    <asp:Button ID="btnRegister" runat="server" CssClass="btn-primary" Text="Register" />
+    <asp:Button ID="btnRegister" runat="server" CssClass="btn-primary" Text="Register" OnClick="btnRegister_Click" />
 
 </div>
 

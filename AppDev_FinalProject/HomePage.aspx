@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="AppDev_FinalProject.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <asp:Panel ID="Panel1"
     runat="server"
     style="padding:20px;">
@@ -10,11 +11,6 @@
     <p>
         Manage products, orders, inventory and sales in one place.
     </p>
-
-    <asp:Button ID="btnShop"
-        runat="server"
-        Text="Browse Products"
-        CssClass="btn-primary" />
 
 </div>
 

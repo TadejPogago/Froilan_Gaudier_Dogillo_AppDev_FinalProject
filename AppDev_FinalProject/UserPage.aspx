@@ -284,7 +284,7 @@ body{
                 <p class="stocks">Stocks: 100</p>
                 <p class="srp">SRP: ₱402.50</p>
 
-                <asp:Button ID="btnMouse" runat="server" Text="Add To Cart" CssClass="btn-primary" />
+                <asp:Button ID="btnMouse" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnMouse_Click" />
             </div>
         </div>
 
@@ -297,7 +297,7 @@ body{
                 <p class="stocks">Stocks: 100</p>
                 <p class="srp">SRP: ₱8625.00</p>
 
-                <asp:Button ID="btnInk" runat="server" Text="Add To Cart" CssClass="btn-primary" />
+                <asp:Button ID="btnInk" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnInk_Click" />
             </div>
         </div>
 
@@ -310,7 +310,7 @@ body{
                 <p class="stocks">Stocks: 100</p>
                 <p class="srp">₱5750.00</p>
 
-                <asp:Button ID="btnPrinter" runat="server" Text="Add To Cart" CssClass="btn-primary" />
+                <asp:Button ID="btnPrinter" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnPrinter_Click" />
             </div>
         </div>
 
@@ -323,7 +323,7 @@ body{
                 <p class="stocks">Stocks: 100</p>
                 <p class="srp">₱7475.00</p>
 
-                <asp:Button ID="btnLCD" runat="server" Text="Add To Cart" CssClass="btn-primary" />
+                <asp:Button ID="btnLCD" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnLCD_Click" />
             </div>
         </div>
 
@@ -336,14 +336,14 @@ body{
                 <p class="stocks">Stocks: 100</p>
                 <p class="srp">₱8625.00</p>
 
-                <asp:Button ID="btnLED" runat="server" Text="Add To Cart" CssClass="btn-primary" />
+                <asp:Button ID="btnLED" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnLED_Click" />
             </div>
         </div>
 
     </div>
 
     <!-- CHECKOUT -->
-        <div class="checkout-page">
+<div class="checkout-page">
 
     <h1 class="checkout-title">
         Checkout Summary
@@ -355,75 +355,43 @@ body{
         <div class="checkout-products">
 
             <div class="checkout-header">
-
                 <span>Product</span>
                 <span>Price</span>
                 <span>Qty</span>
                 <span>Amount</span>
-
             </div>
 
-            <!-- ITEM -->
-            <div class="checkout-item">
+            <!-- REPEATER -->
+            <asp:Repeater ID="rptCart" runat="server">
 
-                <div class="product-details">
+                <ItemTemplate>
 
-                    <img src="Images/mouse.png" />
+                    <div class="checkout-item">
 
-                    <div>
+                        <div class="product-details">
 
-                        <h3>Mouse</h3>
+                            <div>
+                                <h3><%# Eval("ProductName") %></h3>
+                                <p><%# Eval("ProductId") %></p>
+                            </div>
 
-                        <p>MSE</p>
+                        </div>
+
+                        <div class="product-price">
+                            ₱<%# Eval("Price") %></div>
+
+                        <div class="product-qty">
+                            <%# Eval("Quantity") %>
+                        </div>
+
+                        <div class="product-total">
+                            ₱<%# Eval("Total") %></div>
 
                     </div>
 
-                </div>
+                </ItemTemplate>
 
-                <div class="product-price">
-                    ₱350
-                </div>
-
-                <div class="product-qty">
-                    2
-                </div>
-
-                <div class="product-total">
-                    ₱700
-                </div>
-
-            </div>
-
-            <!-- ITEM -->
-            <div class="checkout-item">
-
-                <div class="product-details">
-
-                    <img src="Images/lcd.png" />
-
-                    <div>
-
-                        <h3>LCD Monitor</h3>
-
-                        <p>MNTRLc</p>
-
-                    </div>
-
-                </div>
-
-                <div class="product-price">
-                    ₱6500
-                </div>
-
-                <div class="product-qty">
-                    1
-                </div>
-
-                <div class="product-total">
-                    ₱6500
-                </div>
-
-            </div>
+            </asp:Repeater>
 
         </div>
 
@@ -433,47 +401,41 @@ body{
             <h2>Order Summary</h2>
 
             <div class="summary-row">
-
                 <span>Subtotal</span>
-
-                <span>₱7200</span>
-
+                <asp:Label ID="lblSubtotal" runat="server" Text="₱0.00"></asp:Label>
             </div>
 
             <div class="summary-row">
-
                 <span>VAT (10%)</span>
-
-                <span>₱720</span>
-
+                <asp:Label ID="lblVAT" runat="server" Text="₱0.00"></asp:Label>
             </div>
 
             <div class="summary-row">
-
                 <span>Discount</span>
-
-                <span>₱0</span>
-
+                <asp:Label ID="lblDiscount" runat="server" Text="₱0.00"></asp:Label>
             </div>
 
-            <div class="summary-total">
+    <div class="summary-total">
+    <span>Total</span>
+    <asp:Label ID="lblTotal" runat="server" Text="₱0.00"></asp:Label>
+</div>
 
-                <span>Total</span>
+<asp:Button
+    ID="btnCompute"
+    runat="server"
+    Text="Compute Total"
+    CssClass="checkout-btn"
+    OnClick="btnCompute_Click" />
 
-                <span>₱7920</span>
-
-            </div>
-
-            <asp:Button
-                ID="btnConfirm"
-                runat="server"
-                Text="Confirm Order"
-                CssClass="checkout-btn" />
-
+<asp:Button
+    ID="btnConfirm"
+    runat="server"
+    Text="Confirm Order"
+    CssClass="checkout-btn"
+    OnClick="btnConfirm_Click" />
         </div>
 
     </div>
-
-</div>
     </div>
+</div>
 </asp:Content>
