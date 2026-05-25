@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="AppDev_FinalProject.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <asp:Panel ID="Panel1"
+    <asp:Panel ID="Panel1"
     runat="server"
     style="padding:20px;">
     <div class="hero">

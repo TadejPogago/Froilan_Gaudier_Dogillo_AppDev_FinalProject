@@ -13,18 +13,11 @@
         CssClass="textbox"
         placeholder="Username" />
 
-    <asp:TextBox
-        ID="txtPassword"
-        runat="server"
-        CssClass="textbox"
-        TextMode="Password"
-        placeholder="Password" OnTextChanged="txtPassword_TextChanged" />
-
-    <asp:Button
-        ID="btnLogin"
-        runat="server"
-        Text="Login"
-        CssClass="btn-primary" />
+        <br />
+        <asp:TextBox ID="txtPassword" runat="server" CssClass="textbox" OnTextChanged="txtPassword_TextChanged" placeholder="Password" TextMode="Password" />
+        <br />
+        <asp:Button ID="btnLogin" runat="server" CssClass="btn-primary" Text="Login" />
+        <asp:LinkButton ID="LinkReg" runat="server">Register Here</asp:LinkButton>
 
 </div>
    </asp:Panel>

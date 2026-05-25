@@ -11,7 +11,7 @@ namespace AppDev_FinalProject
 {
 
 
-    public partial class WebForm2
+    public partial class WebForm3
     {
 
         /// <summary>
@@ -24,39 +24,48 @@ namespace AppDev_FinalProject
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
-        /// txtUsername control.
+        /// txtUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        protected global::System.Web.UI.WebControls.TextBox txtUser;
 
         /// <summary>
-        /// txtPassword control.
+        /// txtPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtPass;
 
         /// <summary>
-        /// btnLogin control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// LinkReg control.
+        /// ddlMembership control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkReg;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMembership;
+
+        /// <summary>
+        /// btnRegister control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegister;
     }
 }

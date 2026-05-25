@@ -11,7 +11,7 @@ namespace AppDev_FinalProject
 {
 
 
-    public partial class WebForm2
+    public partial class WebForm4
     {
 
         /// <summary>
@@ -24,39 +24,30 @@ namespace AppDev_FinalProject
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
-        /// txtUsername control.
+        /// lbltotalProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        protected global::System.Web.UI.WebControls.Label lbltotalProducts;
 
         /// <summary>
-        /// txtPassword control.
+        /// lbltotalmember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.Label lbltotalmember;
 
         /// <summary>
-        /// btnLogin control.
+        /// lbltotalsales control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
-
-        /// <summary>
-        /// LinkReg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkReg;
+        protected global::System.Web.UI.WebControls.Label lbltotalsales;
     }
 }
