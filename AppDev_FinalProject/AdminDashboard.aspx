@@ -43,7 +43,13 @@
                         <br />
 
 
+<h2>Product Records</h2>
 
+<asp:GridView
+    ID="gvProducts"
+    runat="server"
+    CssClass="table">
+</asp:GridView>
                 </asp:Panel>
             </asp:Content>
 
