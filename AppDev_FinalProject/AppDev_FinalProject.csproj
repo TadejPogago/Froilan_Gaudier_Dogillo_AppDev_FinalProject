@@ -72,6 +72,7 @@
     <Content Include="DesignCSS\HtmlPage1.html" />
     <Content Include="DesignCSS\StyleSheet1.css" />
     <Content Include="UserPage.aspx" />
+    <Content Include="UserPageMan.aspx" />
     <Content Include="Web.config" />
     <Content Include="HomePage.aspx" />
     <Content Include="LoginPage.aspx" />
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="RegisterPage.aspx.designer.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPageMan.aspx.cs">
+      <DependentUpon>UserPageMan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPageMan.aspx.designer.cs">
+      <DependentUpon>UserPageMan.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
