@@ -75,7 +75,6 @@
     <Content Include="HomePage.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="RegisterPage.aspx" />
-    <Content Include="AdminDashboard.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CartPage.aspx.cs">
@@ -120,13 +119,6 @@
     </Compile>
     <Compile Include="RegisterPage.aspx.designer.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminDashboard.aspx.cs">
-      <DependentUpon>AdminDashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminDashboard.aspx.designer.cs">
-      <DependentUpon>AdminDashboard.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
