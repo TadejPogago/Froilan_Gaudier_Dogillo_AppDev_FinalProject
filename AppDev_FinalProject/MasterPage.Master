@@ -18,17 +18,22 @@
             </div>
 
             <div class="nav">
-                <a href="Home.aspx">Home</a>
-                <a href="Products.aspx">Products</a>
-                <a href="Cart.aspx">Cart</a>
-                <a href="Profile.aspx">Profile</a>
-                <a href="Login.aspx">Logout</a>
+                <a href="HomePage.aspx">Home</a>
+                <a href="ProductsPage.aspx">Products</a>
+                <a href="CartPage.aspx">Cart</a>
+                <a href="ProfilePage.aspx">Profile</a>
+                <a href="LoginPage.aspx">Logout</a>
             </div>
 
         </div>
 
         <div class="content">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <asp:Panel ID="Panel1" runat="server" style="padding:20px;">    
+
+
+                </asp:Panel>
+            </asp:ContentPlaceHolder>
         <div class="footer">
             © 2026 Sales Inventory System
         </div>
