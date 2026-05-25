@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminPage.aspx" />
-    <Content Include="CartPage.aspx" />
     <Content Include="DesignCSS\HtmlPage1.html" />
     <Content Include="DesignCSS\StyleSheet1.css" />
     <Content Include="UserPage.aspx" />
@@ -85,13 +84,6 @@
     </Compile>
     <Compile Include="AdminPage.aspx.designer.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CartPage.aspx.cs">
-      <DependentUpon>CartPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CartPage.aspx.designer.cs">
-      <DependentUpon>CartPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AdminPage.aspx.cs" Inherits="AppDev_FinalProject.AdminPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<style>
+    <style>
 * {
     margin: 0;
     padding: 0;
@@ -772,4 +772,15 @@ body {
     };
 </script>
 
+</asp:Content>
+<asp:Content ID="Content2" runat="server" contentplaceholderid="NavBarContent">
+    <div class="header">
+        <div class="logo">
+            Sales Inventory System
+        </div>
+        <div class="nav">
+            <a href="AdminPage.aspx">Dashboard</a>
+            <a href="HomePage.aspx">Logout</a>
+        </div>
+    </div>
 </asp:Content>

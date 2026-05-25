@@ -102,3 +102,16 @@
 
 </div>
 </asp:Content>
+<asp:Content ID="Content2" runat="server" contentplaceholderid="NavBarContent">
+    <div class="header">
+        <div class="logo">
+            Sales Inventory System
+        </div>
+        <div class="nav">
+            <a href="UserPage.aspx">Dashboard</a>
+            <a href="UserPageMan.aspx">Profile</a> 
+            <a href="HomePage.aspx">Logout</a>
+        </div>
+    </div>
+</asp:Content>
+

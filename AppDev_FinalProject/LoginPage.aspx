@@ -23,3 +23,16 @@
    </asp:Panel>
 </asp:Content>
 
+<asp:Content ID="Content2" runat="server" contentplaceholderid="NavBarContent">
+    <div class="header">
+        <div class="logo">
+            Sales Inventory System
+        </div>
+        <div class="nav">
+           <a href="HomePage.aspx">Home</a>
+           <a href="RegisterPage.aspx">Register</a>
+        </div>
+    </div>
+</asp:Content>
+
+

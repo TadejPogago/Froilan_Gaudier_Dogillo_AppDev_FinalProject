@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="AppDev_FinalProject.WebForm1" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <asp:Panel ID="Panel1"
+<asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
+            <asp:Panel ID="Panel1"
     runat="server"
     style="padding:20px;">
     <div class="hero">
@@ -33,3 +32,20 @@
 </div>
  </asp:Panel>
 </asp:Content>
+
+
+<asp:Content ID="Content2" runat="server" contentplaceholderid="NavBarContent">
+    <div class="header">
+        <div class="logo">
+            Sales Inventory System
+        </div>
+        <div class="nav">
+            <a href="HomePage.aspx">Home</a>
+            <a href="LoginPage.aspx">Login</a> 
+            <a href="RegisterPage.aspx">Register</a> 
+        </div>
+    </div>
+</asp:Content>
+
+
+

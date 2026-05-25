@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="AppDev_FinalProject.MasterPage" %>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
 <head runat="server">
     <title>Sales Inventory System</title>
@@ -8,11 +8,12 @@
 </head>
 
 <body>
+<form id="form1" runat="server">
 
-    <form id="form1" runat="server">
 
+<%--    NAVBAR CONTENT--%>
+    <asp:ContentPlaceHolder ID="NavBarContent" runat="server">
         <div class="header">
-
             <div class="logo">
                 Sales Inventory System
             </div>
@@ -23,21 +24,18 @@
                 <a href="UserPageMan.aspx">Profile</a>
                 <a href="LoginPage.aspx">Logout</a>
             </div>
-
         </div>
+    </asp:ContentPlaceHolder>
 
-        <div class="content">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                <asp:Panel ID="Panel1" runat="server" style="padding:20px;">    
+   <%-- BODY CONTENT--%>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
+    </asp:ContentPlaceHolder>
 
-                </asp:Panel>
-            </asp:ContentPlaceHolder>
-        <div class="footer">
-            © 2026 Sales Inventory System
-        </div>
+    <div class="footer">
+        © 2026 Sales Inventory System
+    </div>
 
-    </form>
-
+</form>
 </body>
 </html>
