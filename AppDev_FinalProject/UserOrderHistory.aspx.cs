@@ -28,12 +28,9 @@ namespace AppDev_FinalProject
 
         private void LoadOrders()
         {
-            SqlParameter[] param =
-            {
-                new SqlParameter("@MemberId", Session["MemberId"])
-            };
+            int userId = Convert.ToInt32(Session["UserID"]);
 
-            DataTable dt = SqlDb.ExecuteDataTable("sp_GetUserOrders", param);
+            DataTable dt = SqlDb.GetUserOrders(userId);
 
             gvOrders.DataSource = dt;
             gvOrders.DataBind();
