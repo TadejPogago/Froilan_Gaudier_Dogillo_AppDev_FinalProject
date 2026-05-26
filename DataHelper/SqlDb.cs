@@ -168,8 +168,8 @@ namespace DataHelper
         //save orders
         public static int SaveOrder(int userId, decimal subtotal, decimal vat, decimal discount, decimal totalAmount)
         {
-            using (SqlConnection conn =
-                new SqlConnection(connString))
+            int newOrderId = 0;
+            using (SqlConnection conn = new SqlConnection(connString))
             {
                 using (SqlCommand cmd =
                     new SqlCommand("sp_SaveOrder", conn))
@@ -193,11 +193,10 @@ namespace DataHelper
                         "@TotalAmount", totalAmount);
 
                     conn.Open();
-
-                    return Convert.ToInt32(
-                        cmd.ExecuteScalar());
+                    newOrderId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
+            return newOrderId;
         }
 
         //save order details
@@ -213,30 +212,16 @@ namespace DataHelper
             using (SqlConnection conn =
                 new SqlConnection(connString))
             {
-                using (SqlCommand cmd =
-                    new SqlCommand(
-                    "sp_SaveOrderDetails", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_SaveOrderDetails", conn))
                 {
-                    cmd.CommandType =
-                        CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue(
-                        "@OrderID", orderId);
-
-                    cmd.Parameters.AddWithValue(
-                        "@ProductID", productId);
-
-                    cmd.Parameters.AddWithValue(
-                        "@Quantity", quantity);
-
-                    cmd.Parameters.AddWithValue(
-                        "@Price", price);
-                    
-                    cmd.Parameters.AddWithValue(
-                        "@Total", total);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@OrderID", orderId);
+                    cmd.Parameters.AddWithValue("@ProductID", productId);
+                    cmd.Parameters.AddWithValue("@Quantity", quantity);
+                    cmd.Parameters.AddWithValue("@Price", price);
+                    cmd.Parameters.AddWithValue("@Total", total);
 
                     conn.Open();
-
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -249,23 +234,15 @@ namespace DataHelper
             int quantity
         )
         {
-            using (SqlConnection conn =
-                new SqlConnection(connString))
+            using (SqlConnection conn = new SqlConnection(connString))
             {
-                using (SqlCommand cmd =
-                    new SqlCommand("sp_UpdateStock", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_UpdateStock", conn))
                 {
-                    cmd.CommandType =
-                        CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue(
-                        "@ProductID", productId);
-
-                    cmd.Parameters.AddWithValue(
-                        "@Quantity", quantity);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ProductID", productId);
+                    cmd.Parameters.AddWithValue("@Quantity", quantity);
 
                     conn.Open();
-
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -275,35 +252,18 @@ namespace DataHelper
         public static DataTable GetUserOrders(int userId)
         {
             DataTable dt = new DataTable();
-
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                string query = @"
-                SELECT 
-                    o.OrderID,
-                    p.ProductName,
-                    od.Price,
-                    od.Quantity,
-                    od.Total,
-                    o.OrderDate
-                FROM Orders o
-                INNER JOIN OrderDetails od
-                    ON o.OrderID = od.OrderID
-                INNER JOIN Products p
-                    ON od.ProductID = p.ProductID
-                WHERE o.UserID = @UserID
-                ORDER BY o.OrderDate DESC";
-
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand("sp_GetUserOrders", conn))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@UserID", userId);
-
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            da.Fill(dt);
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
                 }
             }
-
             return dt;
         }
     }
