@@ -12,23 +12,21 @@ namespace AppDev_FinalProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
         }
 
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
-            // FIX: match login session key
-            string user = Session["Username"]?.ToString();
-
-            if (string.IsNullOrEmpty(user))
-            {
-                lblMessage.Text = "No user logged in.";
-                return;
-            }
+            string user =
+                 Session["Username"].ToString();
 
             if (txtNewPassword.Text != txtConfirmPassword.Text)
             {
-                lblMessage.Text = "Passwords do not match!";
+                lblMessage.Text =
+                    "Passwords do not match!";
                 return;
             }
 
@@ -38,9 +36,16 @@ namespace AppDev_FinalProject
                 txtNewPassword.Text
             );
 
-            lblMessage.Text = ok
-                ? "Password changed successfully!"
-                : "Current password is incorrect!";
+            if (ok)
+            {
+                lblMessage.Text =
+                    "Password changed successfully!";
+            }
+            else
+            {
+                lblMessage.Text =
+                    "Current password is incorrect!";
+            }
         }
     }
 }
