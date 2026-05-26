@@ -14,8 +14,7 @@ namespace DataHelper
 
         public static int ExecuteNonQuery
         (
-            string storedProcedure,
-            SqlParameter[] parameters
+            string storedProcedure, SqlParameter[] parameters
         )
         {
             using (SqlConnection con = new SqlConnection(connString))
