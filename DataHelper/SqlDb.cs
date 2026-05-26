@@ -206,7 +206,8 @@ namespace DataHelper
             int orderId,
             string productId,
             int quantity,
-            decimal price
+            decimal price,
+            decimal total
         )
         {
             using (SqlConnection conn =
@@ -230,6 +231,9 @@ namespace DataHelper
 
                     cmd.Parameters.AddWithValue(
                         "@Price", price);
+                    
+                    cmd.Parameters.AddWithValue(
+                        "@Total", total);
 
                     conn.Open();
 

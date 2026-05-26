@@ -446,7 +446,7 @@
             </div>
             <div class="nav">
              <a href="UserPage.aspx">Dashboard</a>
-            <a href="UserOrderHistory.aspx">OrderHistory</a>
+            <a href="UserOrderHistory.aspx">Order History</a>
             <a href="UserPageMan.aspx">Profile</a> 
             <a href="HomePage.aspx">Logout</a>
             </div>

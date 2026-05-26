@@ -21,8 +21,7 @@ namespace AppDev_FinalProject
 
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
-            string user =
-                Session["Username"]?.ToString();
+            string user = Session["Username"]?.ToString();
 
             if (string.IsNullOrEmpty(user))
             {

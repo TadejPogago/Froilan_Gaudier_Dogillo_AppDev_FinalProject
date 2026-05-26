@@ -32,7 +32,7 @@ namespace AppDev_FinalProject
 
             if (dt.Rows.Count > 0)
             {
-                Session["User"] = dt.Rows[0]["Username"].ToString();
+                Session["Username"] = dt.Rows[0]["Username"].ToString();
                 Session["MembershipType"] = dt.Rows[0]["MembershipType"].ToString();
                 Session["UserID"] = dt.Rows[0]["UserID"].ToString();
 

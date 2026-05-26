@@ -142,12 +142,14 @@ namespace AppDev_FinalProject
             // SAVE ORDER DETAILS
             foreach (CartItem item in cart)
             {
+                decimal itemTotal = Convert.ToDecimal(item.Total);
                 SqlDb.SaveOrderDetails
                 (
                     orderId,
                     item.ProductId,
                     item.Quantity,
-                    Convert.ToDecimal(item.Price)
+                    Convert.ToDecimal(item.Price),
+                    itemTotal
                 );
 
                 SqlDb.UpdateStock
