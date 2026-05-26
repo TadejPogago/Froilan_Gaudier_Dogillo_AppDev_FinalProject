@@ -12,22 +12,20 @@ namespace AppDev_FinalProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Redirect to login if not logged in
-            if (Session["MemberId"]     == null)
+            if (Session["UserID"] == null)
             {
-                Response.Write("<script>alert('Please Login Again!');</script>");
+                Response.Redirect("LoginPage.aspx");
                 return;
             }
 
             if (!IsPostBack)
             {
                 if (Session["Cart"] == null)
+                {
                     Session["Cart"] = new List<CartItem>();
+                }
 
                 BindCart();
-
-                // TODO: Uncomment to load live product data from DB
-
             }
         }
 
@@ -58,7 +56,8 @@ namespace AppDev_FinalProject
 
         protected void btnCompute_Click(object sender, EventArgs e)
         {
-            List<CartItem> cart = (List<CartItem>)Session["Cart"];
+            List<CartItem> cart =
+                (List<CartItem>)Session["Cart"];
 
             double subtotal = 0;
 
@@ -71,25 +70,27 @@ namespace AppDev_FinalProject
 
             double discount = 0;
 
-            string membership = Session["Membership"]?.ToString();
+            string membership =
+                Session["MembershipType"]?.ToString();
 
-            // ONLY APPLY DISCOUNT IF 10,000 AND ABOVE
             if (subtotal >= 10000 && membership != null)
             {
                 if (membership == "Silver")
                     discount = subtotal * 0.05;
+
                 else if (membership == "Gold")
                     discount = subtotal * 0.10;
+
                 else if (membership == "Platinum")
                     discount = subtotal * 0.15;
             }
 
             double total = subtotal + vat - discount;
 
-            lblSubtotal.Text = "₱" + subtotal.ToString("0.00");
-            lblVAT.Text = "₱" + vat.ToString("0.00");
-            lblDiscount.Text = "₱" + discount.ToString("0.00");
-            lblTotal.Text = "₱" + total.ToString("0.00");
+            lblSubtotal.Text = "₱" + subtotal.ToString("N2");
+            lblVAT.Text = "₱" + vat.ToString("N2");
+            lblDiscount.Text = "₱" + discount.ToString("N2");
+            lblTotal.Text = "₱" + total.ToString("N2");
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
