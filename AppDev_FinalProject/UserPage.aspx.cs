@@ -12,14 +12,22 @@ namespace AppDev_FinalProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Redirect to login if not logged in
+            if (Session["MemberId"]     == null)
+            {
+                Response.Redirect("~/LoginPage.aspx");
+                return;
+            }
+
             if (!IsPostBack)
             {
                 if (Session["Cart"] == null)
-                {
                     Session["Cart"] = new List<CartItem>();
-                }
 
                 BindCart();
+
+                // TODO: Uncomment to load live product data from DB
+
             }
         }
 

@@ -15,40 +15,130 @@ namespace AppDev_FinalProject
     {
 
         /// <summary>
-        /// lblMemberCount control.
+        /// btnNavDashboard control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMemberCount;
+        protected global::System.Web.UI.WebControls.Button btnNavDashboard;
 
         /// <summary>
-        /// lblTxnCount control.
+        /// btnNavAddProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTxnCount;
+        protected global::System.Web.UI.WebControls.Button btnNavAddProduct;
 
         /// <summary>
-        /// lblTotalSales control.
+        /// btnNavProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalSales;
+        protected global::System.Web.UI.WebControls.Button btnNavProducts;
 
         /// <summary>
-        /// btnGoAddProduct control.
+        /// btnNavMembers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGoAddProduct;
+        protected global::System.Web.UI.WebControls.Button btnNavMembers;
+
+        /// <summary>
+        /// btnNavTransactions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNavTransactions;
+
+        /// <summary>
+        /// btnNavReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNavReports;
+
+        /// <summary>
+        /// btnLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLogout;
+
+        /// <summary>
+        /// pnlDashboard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDashboard;
+
+        /// <summary>
+        /// lblStatProducts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatProducts;
+
+        /// <summary>
+        /// lblStatMembers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatMembers;
+
+        /// <summary>
+        /// lblStatTxn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatTxn;
+
+        /// <summary>
+        /// lblStatSales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatSales;
+
+        /// <summary>
+        /// gvDashStock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvDashStock;
+
+        /// <summary>
+        /// pnlAddProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAddProduct;
 
         /// <summary>
         /// txtProductId control.
@@ -87,15 +177,6 @@ namespace AppDev_FinalProject
         protected global::System.Web.UI.WebControls.TextBox txtStocks;
 
         /// <summary>
-        /// lblSRPPreview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSRPPreview;
-
-        /// <summary>
         /// btnAddProduct control.
         /// </summary>
         /// <remarks>
@@ -114,40 +195,76 @@ namespace AppDev_FinalProject
         protected global::System.Web.UI.WebControls.Label lblAddMsg;
 
         /// <summary>
-        /// btnAddProduct2 control.
+        /// pnlProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddProduct2;
+        protected global::System.Web.UI.WebControls.Panel pnlProducts;
 
         /// <summary>
-        /// litMembers control.
+        /// gvProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litMembers;
+        protected global::System.Web.UI.WebControls.GridView gvProducts;
 
         /// <summary>
-        /// litTransactions control.
+        /// pnlMembers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litTransactions;
+        protected global::System.Web.UI.WebControls.Panel pnlMembers;
 
         /// <summary>
-        /// lblReportSales control.
+        /// gvMembers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReportSales;
+        protected global::System.Web.UI.WebControls.GridView gvMembers;
+
+        /// <summary>
+        /// pnlTransactions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlTransactions;
+
+        /// <summary>
+        /// gvTransactions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvTransactions;
+
+        /// <summary>
+        /// pnlReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlReports;
+
+        /// <summary>
+        /// lblTotalSales control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalSales;
 
         /// <summary>
         /// lblReportDate control.
@@ -159,30 +276,30 @@ namespace AppDev_FinalProject
         protected global::System.Web.UI.WebControls.Label lblReportDate;
 
         /// <summary>
-        /// btnPrintReport control.
+        /// rptChart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrintReport;
+        protected global::System.Web.UI.WebControls.Repeater rptChart;
 
         /// <summary>
-        /// litSalesReport control.
+        /// gvSalesReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litSalesReport;
+        protected global::System.Web.UI.WebControls.GridView gvSalesReport;
 
         /// <summary>
-        /// lblGrandTotal control.
+        /// gvMemberReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGrandTotal;
+        protected global::System.Web.UI.WebControls.GridView gvMemberReport;
     }
 }

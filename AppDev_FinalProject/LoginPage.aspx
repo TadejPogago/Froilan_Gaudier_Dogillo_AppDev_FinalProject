@@ -16,7 +16,7 @@
         <br />
         <asp:TextBox ID="txtPassword" runat="server" CssClass="textbox" OnTextChanged="txtPassword_TextChanged" placeholder="Password" TextMode="Password" />
         <br />
-        <asp:Button ID="btnLogin" runat="server" CssClass="btn-primary" Text="Login" />
+        <asp:Button ID="btnLogin" runat="server" CssClass="btn-primary" Text="Login" OnClick="btnLogin_Click" style="height: 35px" />
         <asp:LinkButton ID="LinkReg" runat="server">Register Here</asp:LinkButton>
 
 </div>
