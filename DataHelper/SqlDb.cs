@@ -11,7 +11,7 @@ namespace DataHelper
 {
     public class SqlDb
     {
-        static string connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MasterFile;Integrated Security=True;Connect Timeout=30;";
+        private static string connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MasterFile;Integrated Security=True;Connect Timeout=30;";
 
         //register user
         public static bool RegisterUser
@@ -22,52 +22,35 @@ namespace DataHelper
             bool isAdmin = false
         )
         {
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn =
+                new SqlConnection(connString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_RegisterUser", conn))
+                using (SqlCommand cmd =
+                    new SqlCommand("sp_RegisterUser", conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password);
-                    cmd.Parameters.AddWithValue("@MembershipType", membership);
-                    cmd.Parameters.AddWithValue("@IsAdmin", isAdmin);
+                    cmd.Parameters.AddWithValue(
+                        "@Username", username);
+
+                    cmd.Parameters.AddWithValue(
+                        "@PasswordHash", password);
+
+                    cmd.Parameters.AddWithValue(
+                        "@MembershipType", membership);
+
+                    cmd.Parameters.AddWithValue(
+                        "@IsAdmin", isAdmin);
 
                     conn.Open();
 
-                    int rows = cmd.ExecuteNonQuery();
-
-                    return rows > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
         }
 
-        //login user
-        public static bool LoginUser
-        (
-            string username,
-            string password
-        )
-        {
-            using (SqlConnection conn = new SqlConnection(connString))
-            {
-                using (SqlCommand cmd = new SqlCommand("sp_LoginUser", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password);
-
-                    conn.Open();
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    return reader.HasRows;
-                }
-            }
-        }
-
-        //validate user account
+        //login
         public static DataTable ValidateUserAccount
         (
             string username,
@@ -76,16 +59,25 @@ namespace DataHelper
         {
             DataTable dt = new DataTable();
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn =
+                new SqlConnection(connString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_ValidateUserAccount", conn))
+                using (SqlCommand cmd =
+                    new SqlCommand(
+                    "sp_ValidateUserAccount",
+                    conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.Parameters.AddWithValue(
+                        "@Username", username);
 
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    cmd.Parameters.AddWithValue(
+                        "@PasswordHash", password);
+
+                    SqlDataAdapter da =
+                        new SqlDataAdapter(cmd);
 
                     da.Fill(dt);
                 }
@@ -102,42 +94,48 @@ namespace DataHelper
             string newPassword
         )
         {
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn =
+                new SqlConnection(connString))
             {
                 conn.Open();
 
                 string checkQuery =
-                    @"SELECT COUNT(*) 
-                      FROM Users
-                      WHERE Username=@Username
-                      AND Password=@Password";
+                @"SELECT COUNT(*)
+                  FROM Users
+                  WHERE Username=@Username
+                  AND PasswordHash=@Password";
 
-                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+                using (SqlCommand checkCmd =
+                    new SqlCommand(checkQuery, conn))
                 {
-                    checkCmd.Parameters.AddWithValue("@Username", username);
-                    checkCmd.Parameters.AddWithValue("@Password", currentPassword);
+                    checkCmd.Parameters.AddWithValue(
+                        "@Username", username);
 
-                    int count = (int)checkCmd.ExecuteScalar();
+                    checkCmd.Parameters.AddWithValue(
+                        "@Password", currentPassword);
+
+                    int count =
+                        (int)checkCmd.ExecuteScalar();
 
                     if (count == 0)
-                    {
                         return false;
-                    }
                 }
 
                 string updateQuery =
-                    @"UPDATE Users
-                      SET Password=@NewPassword
-                      WHERE Username=@Username";
+                @"UPDATE Users
+                  SET PasswordHash=@NewPassword
+                  WHERE Username=@Username";
 
-                using (SqlCommand updateCmd = new SqlCommand(updateQuery, conn))
+                using (SqlCommand updateCmd =
+                    new SqlCommand(updateQuery, conn))
                 {
-                    updateCmd.Parameters.AddWithValue("@NewPassword", newPassword);
-                    updateCmd.Parameters.AddWithValue("@Username", username);
+                    updateCmd.Parameters.AddWithValue(
+                        "@NewPassword", newPassword);
 
-                    int rows = updateCmd.ExecuteNonQuery();
+                    updateCmd.Parameters.AddWithValue(
+                        "@Username", username);
 
-                    return rows > 0;
+                    return updateCmd.ExecuteNonQuery() > 0;
                 }
             }
         }
@@ -147,13 +145,17 @@ namespace DataHelper
         {
             DataTable dt = new DataTable();
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn =
+                new SqlConnection(connString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_GetProducts", conn))
+                using (SqlCommand cmd =
+                    new SqlCommand("sp_GetProducts", conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
 
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    SqlDataAdapter da =
+                        new SqlDataAdapter(cmd);
 
                     da.Fill(dt);
                 }
@@ -162,31 +164,32 @@ namespace DataHelper
             return dt;
         }
 
-        //save order
+        //save orders
         public static int SaveOrder
         (
             int userId,
-            decimal subtotal,
-            decimal vat,
-            decimal discount,
             decimal totalAmount
         )
         {
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn =
+                new SqlConnection(connString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_SaveOrder", conn))
+                using (SqlCommand cmd =
+                    new SqlCommand("sp_SaveOrder", conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@UserID", userId);
-                    cmd.Parameters.AddWithValue("@Subtotal", subtotal);
-                    cmd.Parameters.AddWithValue("@VAT", vat);
-                    cmd.Parameters.AddWithValue("@Discount", discount);
-                    cmd.Parameters.AddWithValue("@TotalAmount", totalAmount);
+                    cmd.Parameters.AddWithValue(
+                        "@UserID", userId);
+
+                    cmd.Parameters.AddWithValue(
+                        "@TotalAmount", totalAmount);
 
                     conn.Open();
 
-                    return Convert.ToInt32(cmd.ExecuteScalar());
+                    return Convert.ToInt32(
+                        cmd.ExecuteScalar());
                 }
             }
         }
@@ -197,21 +200,30 @@ namespace DataHelper
             int orderId,
             string productId,
             int quantity,
-            decimal price,
-            decimal total
+            decimal price
         )
         {
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn =
+                new SqlConnection(connString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_SaveOrderDetails", conn))
+                using (SqlCommand cmd =
+                    new SqlCommand(
+                    "sp_SaveOrderDetails", conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@OrderID", orderId);
-                    cmd.Parameters.AddWithValue("@ProductID", productId);
-                    cmd.Parameters.AddWithValue("@Quantity", quantity);
-                    cmd.Parameters.AddWithValue("@Price", price);
-                    cmd.Parameters.AddWithValue("@Total", total);
+                    cmd.Parameters.AddWithValue(
+                        "@OrderID", orderId);
+
+                    cmd.Parameters.AddWithValue(
+                        "@ProductID", productId);
+
+                    cmd.Parameters.AddWithValue(
+                        "@Quantity", quantity);
+
+                    cmd.Parameters.AddWithValue(
+                        "@Price", price);
 
                     conn.Open();
 
@@ -227,14 +239,20 @@ namespace DataHelper
             int quantity
         )
         {
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn =
+                new SqlConnection(connString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_UpdateStock", conn))
+                using (SqlCommand cmd =
+                    new SqlCommand("sp_UpdateStock", conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@ProductID", productId);
-                    cmd.Parameters.AddWithValue("@Quantity", quantity);
+                    cmd.Parameters.AddWithValue(
+                        "@ProductID", productId);
+
+                    cmd.Parameters.AddWithValue(
+                        "@Quantity", quantity);
 
                     conn.Open();
 
@@ -243,23 +261,35 @@ namespace DataHelper
             }
         }
 
-        //admin dashboard
-        public static DataSet AdminDashboard()
+        //get user orders
+        public static DataTable GetUserOrders
+        (
+            int userId
+        )
         {
-            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn =
+                new SqlConnection(connString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_AdminDashboard", conn))
+                using (SqlCommand cmd =
+                    new SqlCommand(
+                    "sp_GetUserOrders", conn))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
 
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    cmd.Parameters.AddWithValue(
+                        "@UserID", userId);
 
-                    da.Fill(ds);
+                    SqlDataAdapter da =
+                        new SqlDataAdapter(cmd);
+
+                    da.Fill(dt);
                 }
             }
-            return ds;
+
+            return dt;
         }
     }
 }
