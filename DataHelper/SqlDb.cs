@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -262,30 +263,35 @@ namespace DataHelper
         }
 
         //get user orders
-        public static DataTable GetUserOrders
-        (
-            int userId
-        )
+        public static DataTable GetUserOrders(int userId)
         {
             DataTable dt = new DataTable();
 
-            using (SqlConnection conn =
-                new SqlConnection(connString))
+            using (SqlConnection conn = new SqlConnection(connString))
             {
-                using (SqlCommand cmd =
-                    new SqlCommand(
-                    "sp_GetUserOrders", conn))
+                string query = @"
+                SELECT 
+                    o.OrderID,
+                    p.ProductName,
+                    od.Price,
+                    od.Quantity,
+                    od.Total,
+                    o.OrderDate
+                FROM Orders o
+                INNER JOIN OrderDetails od
+                    ON o.OrderID = od.OrderID
+                INNER JOIN Products p
+                    ON od.ProductID = p.ProductID
+                WHERE o.UserID = @UserID
+                ORDER BY o.OrderDate DESC";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.CommandType =
-                        CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", userId);
 
-                    cmd.Parameters.AddWithValue(
-                        "@UserID", userId);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-                    SqlDataAdapter da =
-                        new SqlDataAdapter(cmd);
-
-                    da.Fill(dt);
+            da.Fill(dt);
                 }
             }
 
