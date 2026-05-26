@@ -15,22 +15,29 @@ namespace AppDev_FinalProject
             if (Session["Username"] == null)
             {
                 Response.Redirect("LoginPage.aspx");
+                return;
             }
         }
 
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
             string user =
-                 Session["Username"].ToString();
+                Session["Username"]?.ToString();
 
-            if (txtNewPassword.Text != txtConfirmPassword.Text)
+            if (string.IsNullOrEmpty(user))
             {
-                lblMessage.Text =
-                    "Passwords do not match!";
+                lblMessage.Text = "No user logged in.";
                 return;
             }
 
-            bool ok = SqlDb.ChangePassword(
+            if (txtNewPassword.Text != txtConfirmPassword.Text)
+            {
+                lblMessage.Text = "Passwords do not match!";
+                return;
+            }
+
+            bool ok = SqlDb.ChangePassword
+            (
                 user,
                 txtCurrentPassword.Text,
                 txtNewPassword.Text

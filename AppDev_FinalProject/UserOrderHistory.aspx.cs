@@ -13,8 +13,8 @@ namespace AppDev_FinalProject
     public partial class UserOrderHistory : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-            if (Session["MemberId"] == null)
+        {// CHECK LOGIN
+            if (Session["UserID"] == null)
             {
                 Response.Redirect("LoginPage.aspx");
                 return;
