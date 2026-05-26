@@ -70,6 +70,7 @@
     <Content Include="AdminPage.aspx" />
     <Content Include="DesignCSS\HtmlPage1.html" />
     <Content Include="DesignCSS\StyleSheet1.css" />
+    <Content Include="UserOrderHistory.aspx" />
     <Content Include="UserPage.aspx" />
     <Content Include="UserPageMan.aspx" />
     <Content Include="Web.config" />
@@ -106,6 +107,13 @@
     </Compile>
     <Compile Include="LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserOrderHistory.aspx.cs">
+      <DependentUpon>UserOrderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserOrderHistory.aspx.designer.cs">
+      <DependentUpon>UserOrderHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPage.aspx.cs">
       <DependentUpon>UserPage.aspx</DependentUpon>

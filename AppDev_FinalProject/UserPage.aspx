@@ -445,9 +445,10 @@
                 Sales Inventory System
             </div>
             <div class="nav">
-                <a href="UserPage.aspx">Dashboard</a>
-                <a href="UserPageMan.aspx">Profile</a> 
-                <a href="HomePage.aspx">Logout</a>
+             <a href="UserPage.aspx">Dashboard</a>
+            <a href="UserOrderHistory.aspx">OrderHistory</a>
+            <a href="UserPageMan.aspx">Profile</a> 
+            <a href="HomePage.aspx">Logout</a>
             </div>
         </div>
     </asp:Content>
