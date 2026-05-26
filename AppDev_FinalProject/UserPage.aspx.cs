@@ -15,7 +15,7 @@ namespace AppDev_FinalProject
             // Redirect to login if not logged in
             if (Session["MemberId"]     == null)
             {
-                Response.Redirect("~/LoginPage.aspx");
+                Response.Write("<script>alert('Please Login Again!');</script>");
                 return;
             }
 

@@ -17,9 +17,10 @@ namespace AppDev_FinalProject
 
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {
-            string user = Session["User"]?.ToString();
+            // FIX: match login session key
+            string user = Session["Username"]?.ToString();
 
-            if (user == null)
+            if (string.IsNullOrEmpty(user))
             {
                 lblMessage.Text = "No user logged in.";
                 return;
@@ -37,10 +38,9 @@ namespace AppDev_FinalProject
                 txtNewPassword.Text
             );
 
-            if (ok)
-                lblMessage.Text = "Password changed successfully!";
-            else
-                lblMessage.Text = "Current password is incorrect!";
+            lblMessage.Text = ok
+                ? "Password changed successfully!"
+                : "Current password is incorrect!";
         }
     }
 }
