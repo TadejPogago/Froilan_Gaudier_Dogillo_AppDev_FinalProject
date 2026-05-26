@@ -24,37 +24,33 @@ namespace AppDev_FinalProject
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            SqlParameter[] param =
-            {
-                new SqlParameter("@Username", txtUsername.Text),
-                new SqlParameter("@Password", txtPassword.Text)
-            };
+            DataTable dt = SqlDb.ValidateUserAccount
+            (
+                txtUsername.Text.Trim(),
+                txtPassword.Text.Trim()
+            );
 
-            DataTable dt =
-                SqlDb.ExecuteDataTable("sp_LoginUser", param);
-
-            // ACCOUNT EXISTS
             if (dt.Rows.Count > 0)
             {
-                // SAVE USER INFO IN SESSION
-                Session["MemberId"] =
-                    dt.Rows[0]["UserID"].ToString();
+                Session["User"] = dt.Rows[0]["Username"].ToString();
+                Session["Membership"] = dt.Rows[0]["MembershipType"].ToString();
+                Session["UserID"] = dt.Rows[0]["UserID"].ToString();
 
-                Session["Username"] =
-                    dt.Rows[0]["Username"].ToString();
+                bool isAdmin =
+                    Convert.ToBoolean(dt.Rows[0]["IsAdmin"]);
 
-                Session["Membership"] =
-                    dt.Rows[0]["Membership"].ToString();
-
-                // REDIRECT TO USER PAGE
-                Response.Redirect("~/UserPage.aspx");
+                if (isAdmin)
+                {
+                    Response.Redirect("AdminPage.aspx");
+                }
+                else
+                {
+                    Response.Redirect("UserPage.aspx");
+                }
             }
             else
             {
-                // ACCOUNT NOT FOUND
-                Response.Write(
-                    "<script>alert('Account not found!');</script>"
-                );
+                Response.Write("<script>alert('Invalid Username or Password');</script>");
             }
         }
 

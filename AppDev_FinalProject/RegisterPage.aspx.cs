@@ -17,7 +17,23 @@ namespace AppDev_FinalProject
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-     
+            bool success = SqlDb.RegisterUser
+            (
+                txtUser.Text.Trim(),
+                txtPass.Text.Trim(),
+                ddlMembership.SelectedValue
+            );
+
+            if (success)
+            {
+                Response.Write("<script>alert('Registration Successful!');</script>");
+
+                Response.Redirect("LoginPage.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('Registration Failed!');</script>");
+            }
         }
     }
 }
