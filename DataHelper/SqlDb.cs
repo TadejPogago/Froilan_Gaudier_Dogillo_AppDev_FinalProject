@@ -166,11 +166,7 @@ namespace DataHelper
         }
 
         //save orders
-        public static int SaveOrder
-        (
-            int userId,
-            decimal totalAmount
-        )
+        public static int SaveOrder(int userId, decimal subtotal, decimal vat, decimal discount, decimal totalAmount)
         {
             using (SqlConnection conn =
                 new SqlConnection(connString))
@@ -183,6 +179,15 @@ namespace DataHelper
 
                     cmd.Parameters.AddWithValue(
                         "@UserID", userId);
+
+                    cmd.Parameters.AddWithValue(
+                        "@Subtotal", subtotal);
+
+                    cmd.Parameters.AddWithValue(
+                        "@VAT", vat);
+
+                    cmd.Parameters.AddWithValue(
+                        "@Discount", discount);
 
                     cmd.Parameters.AddWithValue(
                         "@TotalAmount", totalAmount);

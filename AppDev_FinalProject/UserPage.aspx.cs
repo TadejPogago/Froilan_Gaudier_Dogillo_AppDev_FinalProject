@@ -95,7 +95,80 @@ namespace AppDev_FinalProject
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            Response.Write("<script>alert('Order Confirmed Successfully!');</script>");
+            List<CartItem> cart = (List<CartItem>)Session["Cart"];
+
+            if (cart == null || cart.Count == 0)
+            {
+                Response.Write("<script>alert('Cart is Empty!');</script>");
+                return;
+            }
+
+            decimal subtotal = 0;
+
+            foreach (CartItem item in cart)
+            {
+                subtotal += Convert.ToDecimal(item.Total);
+            }
+
+            decimal vat = subtotal * 0.10m;
+
+            decimal discount = 0;
+
+            string membership =
+                Session["MembershipType"]?.ToString();
+
+            if (subtotal >= 10000)
+            {
+                if (membership == "Silver")
+                    discount = subtotal * 0.05m;
+
+                else if (membership == "Gold")
+                    discount = subtotal * 0.10m;
+
+                else if (membership == "Platinum")
+                    discount = subtotal * 0.15m;
+            }
+
+            decimal total =
+                subtotal + vat - discount;
+
+            int userId =
+                Convert.ToInt32(Session["UserID"]);
+
+            // SAVE ORDER
+            int orderId =
+                SqlDb.SaveOrder(userId, subtotal, vat, discount, total);
+
+            // SAVE ORDER DETAILS
+            foreach (CartItem item in cart)
+            {
+                SqlDb.SaveOrderDetails
+                (
+                    orderId,
+                    item.ProductId,
+                    item.Quantity,
+                    Convert.ToDecimal(item.Price)
+                );
+
+                SqlDb.UpdateStock
+                (
+                    item.ProductId,
+                    item.Quantity
+                );
+            }
+
+            // CLEAR CART
+            Session["Cart"] = new List<CartItem>();
+
+            BindCart();
+
+            lblSubtotal.Text = "₱0.00";
+            lblVAT.Text = "₱0.00";
+            lblDiscount.Text = "₱0.00";
+            lblTotal.Text = "₱0.00";
+
+            Response.Write(
+                "<script>alert('Order Confirmed Successfully!');</script>");
         }
 
         private void AddToCart(string name, string id, double price)

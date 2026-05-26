@@ -12,7 +12,7 @@ namespace AppDev_FinalProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] == null)
+            if (Session["UserID"] == null)
             {
                 Response.Redirect("LoginPage.aspx");
                 return;
