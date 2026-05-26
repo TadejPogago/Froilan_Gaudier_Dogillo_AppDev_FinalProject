@@ -57,5 +57,10 @@ namespace AppDev_FinalProject
                 );
             }
         }
+
+        protected void LinkReg_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RegisterPage.aspx");
+        }
     }
 }
