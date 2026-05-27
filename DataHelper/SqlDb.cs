@@ -14,6 +14,27 @@ namespace DataHelper
     {
         private static string connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MasterFile;Integrated Security=True;Connect Timeout=30;";
 
+
+        //add product
+        public static bool AddProduct (string productId, string productName, decimal price, int stocks)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_AddProduct", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@ProductID", productId);
+                    cmd.Parameters.AddWithValue("@ProductName", productName);
+                    cmd.Parameters.AddWithValue("@Price", price);
+                    cmd.Parameters.AddWithValue("@Stocks", stocks);
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
         //register user
         public static bool RegisterUser
         (

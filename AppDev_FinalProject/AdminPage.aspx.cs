@@ -52,7 +52,8 @@ namespace AppDev_FinalProject
                 decimal price = Convert.ToDecimal(txtPrice.Text);
                 int stocks = Convert.ToInt32(txtStocks.Text);
 
-              
+                SqlDb.AddProduct(id, name, price, stocks);  // ← ADD THIS LINE
+
                 lblAddMsg.CssClass = "msg-success";
                 lblAddMsg.Text = "Product added successfully.";
 
