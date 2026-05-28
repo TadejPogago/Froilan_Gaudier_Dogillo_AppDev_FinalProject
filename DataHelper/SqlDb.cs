@@ -287,5 +287,81 @@ namespace DataHelper
             }
             return dt;
         }
+        public static int GetTotalProducts()
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Products", conn);
+                conn.Open();
+                return (int)cmd.ExecuteScalar();
+            }
+        }
+
+        public static int GetTotalMembers()
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Users WHERE IsAdmin = 0", conn);
+                conn.Open();
+                return (int)cmd.ExecuteScalar();
+            }
+        }
+
+        // REPLACE WITH this version that returns DataTable
+        public static DataTable GetAllOrders()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                string query = @"
+            SELECT 
+                o.OrderID,
+                u.Username,
+                u.MembershipType,
+                o.Subtotal,
+                o.VAT,
+                o.Discount,
+                o.TotalAmount,
+                o.OrderDate
+            FROM Orders o
+            INNER JOIN Users u ON o.UserID = u.UserID
+            ORDER BY o.OrderDate DESC";
+
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public static decimal GetTotalSales()
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT ISNULL(SUM(TotalAmount), 0) FROM Orders", conn);
+                conn.Open();
+                return (decimal)cmd.ExecuteScalar();
+            }
+        }
+
+        public static DataTable GetAllUsers()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE IsAdmin = 0", conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public static int GetTotalOrders()
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Orders", conn);
+                conn.Open();
+                return (int)cmd.ExecuteScalar();
+            }
+        }
     }
 }
