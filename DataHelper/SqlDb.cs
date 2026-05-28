@@ -12,8 +12,9 @@ namespace DataHelper
 {
     public class SqlDb
     {
-        private static string connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MasterFile;Integrated Security=True;Connect Timeout=30;";
-
+        private static string connString =
+    System.Configuration.ConfigurationManager
+    .ConnectionStrings["SomeeDB"].ConnectionString;
 
         //add product
         public static bool AddProduct (string productId, string productName, decimal price, int stocks)

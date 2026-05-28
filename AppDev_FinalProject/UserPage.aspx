@@ -274,74 +274,27 @@
 
         <!-- PRODUCTS -->
         <div class="products-container">
-
-            <!-- PRODUCT 1 -->
+<!-- PRODUCTS -->
+<div class="products-container">
+    <asp:Repeater ID="rptProducts" runat="server" OnItemCommand="rptProducts_ItemCommand">
+        <ItemTemplate>
             <div class="product-card">
                 <div class="product-info">
-                    <h2>Mouse</h2>
-                    <p class="product-id">Product ID: MSE</p>
-                    <p class="price">₱350.00</p>
-                    <p class="stocks">Stocks: 100</p>
-                    <p class="srp">SRP: ₱402.50</p>
+                    <h2><%# Eval("ProductName") %></h2>
+                    <p class="product-id">Product ID: <%# Eval("ProductID") %></p>
+                    <p class="price">₱<%# String.Format("{0:N2}", Eval("Price")) %></p>
+                    <p class="stocks">Stocks: <%# Eval("Stocks") %></p>
 
-                    <asp:Button ID="btnMouse" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnMouse_Click" />
+                    <asp:Button runat="server"
+                        Text="Add To Cart"
+                        CssClass="btn-primary"
+                        CommandName="AddToCart"
+                        CommandArgument='<%# Eval("ProductID") + "|" + Eval("ProductName") + "|" + Eval("Price") %>' />
                 </div>
             </div>
-
-            <!-- PRODUCT 2 -->
-            <div class="product-card">
-                <div class="product-info">
-                    <h2>Printer Ink</h2>
-                    <p class="product-id">Product ID: PRN</p>
-                    <p class="price">₱7500.00</p>
-                    <p class="stocks">Stocks: 100</p>
-                    <p class="srp">SRP: ₱8625.00</p>
-
-                    <asp:Button ID="btnInk" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnInk_Click" />
-                </div>
-            </div>
-
-            <!-- PRODUCT 3 -->
-            <div class="product-card">
-                <div class="product-info">
-                    <h2>Printer Dot Matrix</h2>
-                    <p class="product-id">Product ID: PRNDT</p>
-                    <p class="price">₱5000.00</p>
-                    <p class="stocks">Stocks: 100</p>
-                    <p class="srp">₱5750.00</p>
-
-                    <asp:Button ID="btnPrinter" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnPrinter_Click" />
-                </div>
-            </div>
-
-            <!-- PRODUCT 4 -->
-            <div class="product-card">
-                <div class="product-info">
-                    <h2>LCD Monitor</h2>
-                    <p class="product-id">Product ID: MNTRLc</p>
-                    <p class="price">₱6500.00</p>
-                    <p class="stocks">Stocks: 100</p>
-                    <p class="srp">₱7475.00</p>
-
-                    <asp:Button ID="btnLCD" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnLCD_Click" />
-                </div>
-            </div>
-
-            <!-- PRODUCT 5 -->
-            <div class="product-card">
-                <div class="product-info">
-                    <h2>LED Monitor</h2>
-                    <p class="product-id">Product ID: MNTRLe</p>
-                    <p class="price">₱7500.00</p>
-                    <p class="stocks">Stocks: 100</p>
-                    <p class="srp">₱8625.00</p>
-
-                    <asp:Button ID="btnLED" runat="server" Text="Add To Cart" CssClass="btn-primary" OnClick="btnLED_Click" />
-                </div>
-            </div>
-
-        </div>
-
+        </ItemTemplate>
+    </asp:Repeater>
+</div>
         <!-- CHECKOUT -->
     <div class="checkout-page">
 

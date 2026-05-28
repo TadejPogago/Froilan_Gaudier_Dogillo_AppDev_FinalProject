@@ -27,33 +27,31 @@ namespace AppDev_FinalProject
 
                 BindCart();
             }
+            if (Session["Cart"] == null)
+                Session["Cart"] = new List<CartItem>();
+
+            LoadProducts(); // ADD THIS
+            BindCart();
         }
 
-        protected void btnMouse_Click(object sender, EventArgs e)
+        private void LoadProducts()
         {
-            AddToCart("Mouse", "MSE", 350);
+            rptProducts.DataSource = SqlDb.GetProducts();
+            rptProducts.DataBind();
         }
 
-        protected void btnInk_Click(object sender, EventArgs e)
+        protected void rptProducts_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            AddToCart("Printer Ink", "PRN", 7500);
-        }
+            if (e.CommandName == "AddToCart")
+            {
+                string[] parts = e.CommandArgument.ToString().Split('|');
+                string productId = parts[0];
+                string productName = parts[1];
+                double price = Convert.ToDouble(parts[2]);
 
-        protected void btnPrinter_Click(object sender, EventArgs e)
-        {
-            AddToCart("Printer Dot Matrix", "PRNDT", 5000);
+                AddToCart(productName, productId, price);
+            }
         }
-
-        protected void btnLCD_Click(object sender, EventArgs e)
-        {
-            AddToCart("LCD Monitor", "MNTRLc", 6500);
-        }
-
-        protected void btnLED_Click(object sender, EventArgs e)
-        {
-            AddToCart("LED Monitor", "MNTRLe", 7500);
-        }
-
         protected void btnCompute_Click(object sender, EventArgs e)
         {
             List<CartItem> cart =
